@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="training">Классы</string>
+    <string name="games">Игры</string>
+    <string name="consultation">Консультация</string>
+    <string name="community">Сообщество</string>
+    <string name="profile">Профиль</string>
+
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blurMain"
+    tools:context=".ui.screens.main.MainScreen">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/navbar_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/navbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/navigation_bg"
+
+
+            android:elevation="20dp"
+
+            android:padding="0dp"
+            android:translationZ="20dp"
+            android:visibility="gone"
+
+            app:elevation="10dp"
+            app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+            app:itemBackground="@drawable/item_bg"
+            app:itemIconSize="22dp"
+
+            app:itemIconTint="@drawable/item_navbar_bg"
+            app:itemRippleColor="@color/status"
+            app:itemTextAppearanceActive="@style/MyBottomNavigationView.TextAppearance"
+            app:itemTextAppearanceInactive="@style/MyBottomNavigationView.TextAppearance"
+            app:itemTextColor="@drawable/item_navbar_bg"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_navbar_menu"
+            tools:visibility="visible" />
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/_10sdp"
+    android:paddingVertical="@dimen/_5sdp"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/key_q"
+            android:layout_width="0dp"
+            android:text="Q"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:paddingVertical="@dimen/_7sdp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_w"
+
+            android:layout_width="0dp"
+            android:text="W"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_e"
+
+            android:layout_width="0dp"
+            android:text="E"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_r"
+
+            android:layout_width="0dp"
+            android:text="R"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_t"
+
+            android:layout_width="0dp"
+            android:text="T"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_y"
+
+            android:layout_width="0dp"
+            android:text="Y"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_u"
+
+            android:layout_width="0dp"
+            android:text="U"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_i"
+
+            android:layout_width="0dp"
+            android:text="I"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_o"
+
+            android:layout_width="0dp"
+            android:text="O"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_p"
+
+            android:layout_width="0dp"
+            android:text="P"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_8sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/key_a"
+
+            android:layout_width="0dp"
+            android:text="A"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_s"
+
+            android:layout_width="0dp"
+            android:text="S"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/key_d"
+
+            android:layout_width="0dp"
+            android:text="D"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/key_f"
+
+            android:layout_width="0dp"
+            android:text="F"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/key_g"
+
+            android:layout_width="0dp"
+            android:text="G"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/key_h"
+
+            android:layout_width="0dp"
+            android:text="H"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/key_j"
+
+            android:layout_width="0dp"
+            android:text="J"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_k"
+
+            android:layout_width="0dp"
+            android:text="K"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_l"
+
+            android:layout_width="0dp"
+            android:text="L"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+
+        <FrameLayout
+            android:id="@+id/shift_key"
+            android:layout_width="@dimen/_34sdp"
+            android:padding="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="@dimen/_34sdp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:src="@drawable/ic_shift_active"
+                android:paddingVertical="@dimen/_6sdp"
+                android:layout_height="match_parent"/>
+
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/key_z"
+
+            android:layout_width="0dp"
+            android:text="Z"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/key_x"
+
+            android:layout_width="0dp"
+            android:text="X"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/key_c"
+
+            android:layout_width="0dp"
+            android:text="C"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/key_v"
+
+            android:layout_width="0dp"
+            android:text="V"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/key_b"
+
+            android:layout_width="0dp"
+            android:text="B"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/key_n"
+
+            android:layout_width="0dp"
+            android:text="N"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/key_m"
+
+            android:layout_width="0dp"
+            android:text="M"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_1sdp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="wrap_content"/>
+
+
+        <FrameLayout
+            android:id="@+id/delete_key"
+
+            android:layout_width="@dimen/_34sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:padding="@dimen/_4sdp"
+            android:background="@drawable/shape_keyboard_button"
+            android:layout_height="@dimen/_34sdp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:src="@drawable/ic_delete"
+                android:paddingVertical="@dimen/_6sdp"
+                android:layout_height="match_parent"/>
+
+
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

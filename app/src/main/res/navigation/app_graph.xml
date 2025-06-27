@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_graph"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.main.MainScreen"
+        android:label="main_screen"
+        tools:layout="@layout/main_screen" >
+        <action
+            android:id="@+id/action_mainScreen_to_trainingScreen"
+            app:destination="@id/trainingScreen" />
+        <action
+            android:id="@+id/action_mainScreen_to_lessonStartScreen"
+            app:destination="@id/startScreen" />
+        <action
+            android:id="@+id/action_mainScreen_to_communityScreen"
+            app:destination="@id/communityScreen" />
+        <action
+            android:id="@+id/action_mainScreen_to_gamesScreen"
+            app:destination="@id/gamesScreen" />
+        <action
+            android:id="@+id/action_mainScreen_to_communityScreen2"
+            app:destination="@id/communityScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.splash.SplashScreen"
+        android:label="splash_screen"
+        tools:layout="@layout/splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_mainScreen"
+            app:destination="@id/mainScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/soundLessonsScreen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.sound_tasks.SoundLessonsScreen"
+        android:label="sound_lessons_screen"
+        tools:layout="@layout/sound_lessons_screen" >
+        <action
+            android:id="@+id/action_soundLessonsScreen_to_gameStartScreen"
+            app:destination="@id/gameStartScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingScreen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.training.TrainingScreen"
+        android:label="training_screen"
+        tools:layout="@layout/training_screen" >
+        <action
+            android:id="@+id/action_trainingScreen_to_soundLessonsScreen"
+            app:destination="@id/soundLessonsScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/communityScreen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.community.CommunityScreen"
+        android:label="community_screen"
+        tools:layout="@layout/community_screen" />
+    <fragment
+        android:id="@+id/secondGame"
+        android:name="com.azamovhudstc.logosmart.ui.screens.games.second_game.SecondGame"
+        android:label="fragment_second_game"
+        tools:layout="@layout/fragment_second_game" />
+    <fragment
+        android:id="@+id/firstGameScreen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.games.first_game.FirstGameScreen"
+        android:label="first_game_screen"
+        tools:layout="@layout/first_game_screen" />
+    <fragment
+        android:id="@+id/startScreen"
+        tools:layout="@layout/start_screen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.start.StartScreen"
+        android:label="LessonStartScreen" >
+        <action
+            android:id="@+id/action_lessonStartScreen_to_gameStartScreen"
+            app:destination="@id/gameStartScreen" />
+        <action
+            android:id="@+id/action_lessonStartScreen_to_secondGame"
+            app:destination="@id/secondGame" />
+    </fragment>
+    <fragment
+        android:id="@+id/finishGameScreen"
+        tools:layout="@layout/level_screen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.finish.FinishGameScreen"
+        android:label="FinishGameScreen" />
+    <fragment
+        android:id="@+id/gameStartScreen"
+        tools:layout="@layout/game_start_screen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.start.GameStartScreen"
+        android:label="GameStartScreen" >
+        <action
+            android:id="@+id/action_gameStartScreen_to_gamesScreen"
+            app:destination="@id/firstGameScreen" />
+        <action
+            android:id="@+id/action_gameStartScreen_to_finishGameScreen"
+            app:destination="@id/finishGameScreen" />
+        <action
+            android:id="@+id/action_gameStartScreen_to_dragDropGame"
+            app:destination="@id/dragDropGame" />
+    </fragment>
+    <fragment
+        android:id="@+id/gamesScreen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.games.GamesScreen"
+        android:label="games_screen"
+        tools:layout="@layout/games_screen" >
+        <action
+            android:id="@+id/action_gamesScreen_to_gameSelectedScreen"
+            app:destination="@id/gameSelectedScreen" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/game_age_screen"
+        android:id="@+id/gameSelectedScreen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.games.selected.GameSelectedScreen"
+        android:label="GameSelectedScreen" >
+        <action
+            android:id="@+id/action_gameSelectedScreen_to_selectedGameViewAll"
+            app:destination="@id/selectedGameViewAll" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedGameViewAll"
+        android:name="com.azamovhudstc.logosmart.ui.screens.games.selected.SelectedGameViewAll"
+        android:label="SelectedGameViewAll" />
+    <fragment
+        android:id="@+id/dragDropGame"
+        tools:layout="@layout/drag_drop_game"
+        android:name="com.azamovhudstc.logosmart.ui.screens.games.drag_drop.DragDropGame"
+        android:label="DragDropGame" >
+        <action
+            android:id="@+id/action_dragDropGame_to_finishGameScreen"
+            app:destination="@id/finishGameScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapScreen"
+        android:name="com.azamovhudstc.logosmart.ui.screens.map.MapScreen"
+        android:label="MapScreen" />
+</navigation>

@@ -1,0 +1,81 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.LogoSmarGame" parent="Theme.Material3.Light">
+        <item name="colorPrimary">@color/basicBlue</item>
+        <item name="colorAccent">@color/blurMain</item>
+        <item name="colorSurface">@color/nav_bg</item>
+        <item name="colorPrimaryDark">#FFFFFF</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnBackground">@color/blurMain</item>
+        <item name="colorControlNormal">@color/blurMain</item>
+        <!--        <item name="themePrimaryBorderButton">@style/ButtonPrimaryBorder</item>-->
+        <!--        <item name="themeNegativeBorderButton">@style/ButtonNegativeBorder</item>-->
+        <item name="colorOnPrimary">@color/blurMain</item>
+        <item name="colorSecondary">@color/darkBlue</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="colorOnSecondaryContainer">?attr/colorOnSecondary</item>
+        <item name="windowActionBar">false</item>
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowBackground">@color/blurMain</item>
+        <item name="android:statusBarColor">#00FFFFFF</item>
+        <item name="android:navigationBarColor">#00FFFFFF</item>
+        <item name="android:fontFamily">@font/nunito_variable_fontwght</item>
+        <item name="titleTextColor">@color/darkBlue</item>
+        <item name="android:textColor">@color/darkBlue</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceOverlay.Demo</item>
+        <item name="snackbarStyle">@style/MySnackbar</item>
+        <item name="snackbarButtonStyle">
+            @style/Widget.MaterialComponents.Button.TextButton.Snackbar
+        </item>
+    </style>
+    <style name="PinWidget.PinViewCustom" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:minLines">2</item>
+        <item name="android:textCursorDrawable">@drawable/pv_invisible_image</item>
+        <item name="android:textSelectHandle">@drawable/pv_invisible_image</item>
+        <item name="android:textSelectHandleLeft">@drawable/pv_invisible_image</item>
+        <item name="android:textSelectHandleRight">@drawable/pv_invisible_image</item>
+    </style>
+
+    <style name="MySnackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:background">@drawable/round_corner</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Demo" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="cornerSize">20dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+        <item name="android:textSize">8sp</item>
+
+    </style>
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/white</item>
+    </style>
+
+
+    <style name="MaterialToolbarTitle" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/nunito_bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="MyBottomNavigationView.TextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/nunito_bold</item>
+    </style>
+
+</resources>

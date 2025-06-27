@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <!--        11-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/startTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/nunito_bold"
+                android:shadowColor="@color/white"
+                android:shadowDx="6"
+                android:shadowDy="4"
+                android:shadowRadius="2"
+                android:text="20"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/basicYellow"
+                android:textFontWeight="800"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/circle_person"
+            app:civ_border_color="@color/basicBlue"
+            app:civ_border_width="2dp" />
+    </RelativeLayout>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/question1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="20dp"
+        android:src="@drawable/bulgor"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintTop_toTopOf="@+id/answer1"
+        app:tint="#48494A" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/question2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:src="@drawable/tomato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/answer2"
+        app:tint="#48494A" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/question3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:src="@drawable/blindly"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/answer3"
+        app:tint="#48494A" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/question4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:src="@drawable/cucumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/answer4"
+        app:tint="#48494A" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/answer1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginVertical="@dimen/_30sdp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/bulgor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/answer2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginVertical="20dp"
+        android:src="@drawable/tomato"
+        app:layout_constraintStart_toStartOf="@+id/answer1"
+        app:layout_constraintTop_toBottomOf="@+id/answer1" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/answer3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginVertical="40dp"
+        android:src="@drawable/blindly"
+        app:layout_constraintLeft_toLeftOf="@+id/answer2"
+        app:layout_constraintRight_toRightOf="@+id/answer2"
+        app:layout_constraintTop_toBottomOf="@+id/answer2" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/answer4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginVertical="40dp"
+        android:src="@drawable/cucumber"
+        app:layout_constraintLeft_toLeftOf="@+id/answer2"
+        app:layout_constraintRight_toRightOf="@+id/answer2"
+        app:layout_constraintTop_toBottomOf="@+id/answer3" />
+
+
+    <FrameLayout
+        android:id="@+id/done1Container"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/answer1"
+        app:layout_constraintEnd_toStartOf="@+id/question1"
+        app:layout_constraintStart_toEndOf="@+id/answer1"
+        app:layout_constraintTop_toTopOf="@+id/answer1">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/question1Done"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/bulgor" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/done" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/done2Container"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/answer2"
+        app:layout_constraintEnd_toStartOf="@+id/question1"
+        app:layout_constraintStart_toEndOf="@+id/answer1"
+        app:layout_constraintTop_toTopOf="@+id/answer2">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/question2Done"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/bulgor" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/done" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/done3Container"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/answer3"
+        app:layout_constraintEnd_toStartOf="@+id/question1"
+        app:layout_constraintStart_toEndOf="@+id/answer1"
+        app:layout_constraintTop_toTopOf="@+id/answer3">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/question3Done"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/bulgor" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/done" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/done4Container"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/answer4"
+        app:layout_constraintEnd_toStartOf="@+id/question1"
+        app:layout_constraintStart_toEndOf="@+id/answer1"
+        app:layout_constraintTop_toTopOf="@+id/answer4">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/question4Done"
+
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/bulgor" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/done" />
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
