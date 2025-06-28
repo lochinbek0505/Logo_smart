@@ -99,6 +99,9 @@
         <action
             android:id="@+id/action_gameStartScreen_to_dragDropGame"
             app:destination="@id/dragDropGame" />
+        <action
+            android:id="@+id/action_gameStartScreen_to_modelFragment"
+            app:destination="@id/modelFragment" />
     </fragment>
     <fragment
         android:id="@+id/gamesScreen"
@@ -135,4 +138,9 @@
         android:id="@+id/mapScreen"
         android:name="com.azamovhudstc.logosmart.ui.screens.map.MapScreen"
         android:label="MapScreen" />
+    <fragment
+        android:id="@+id/modelFragment"
+        android:name="com.azamovhudstc.logosmart.ui.screens.camera_tasks.ModelFragment"
+        android:label="fragment_model"
+        tools:layout="@layout/fragment_model" />
 </navigation>
