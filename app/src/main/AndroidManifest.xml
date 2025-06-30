@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.azamovhudstc.logosmart">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera.any" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
     <application
-        android:name="com.azamovhudstc.logosmart.app.LogoApp"
+        android:name=".app.LogoApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,7 +22,16 @@
         android:theme="@style/Theme.LogoSmarGame"
         tools:targetApi="31">
         <activity
-            android:name="com.azamovhudstc.logosmart.ui.activity.MainActivity"
+            android:name=".ui.screens.camera_tasks.VideoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.camera_tasks.GameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.camera_tasks.ModelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

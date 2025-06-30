@@ -1,5 +1,7 @@
 package com.azamovhudstc.logosmart.ui.screens.training
 
+import android.content.Intent
+import android.net.Uri
 import androidx.navigation.fragment.findNavController
 import com.azamovhudstc.logosmart.R
 import com.azamovhudstc.logosmart.databinding.TrainingScreenBinding
@@ -24,13 +26,16 @@ class TrainingScreen :
 
                 when (position) {
                     0 -> {
+                        openTelegramBot()
+                    }
+                    1 -> {
                         findNavController().navigate(
                             com.azamovhudstc.logosmart.R.id.startScreen,
                             null,
                             animationTransaction().build()
                         )
                     }
-                    1 -> {
+                    2 -> {
                         findNavController().navigate(
                             R.id.soundLessonsScreen, null,
                             animationTransaction().build()
@@ -40,4 +45,21 @@ class TrainingScreen :
             }
 
     }
+    private fun openTelegramBot() {
+        val telegramBotUsername = "logosmartbot"
+        val url = "https://t.me/$telegramBotUsername"
+
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(url)
+            setPackage("org.telegram.messenger")
+        }
+
+        if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(intent)
+        } else {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(browserIntent)
+        }
+    }
+
 }

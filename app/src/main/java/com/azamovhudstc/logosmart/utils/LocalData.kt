@@ -1,7 +1,11 @@
 package com.azamovhudstc.logosmart.utils
 
 import com.azamovhudstc.logosmart.R
-import com.azamovhudstc.logosmart.data.model.*
+import com.azamovhudstc.logosmart.data.model.GameModel
+import com.azamovhudstc.logosmart.data.model.GameNestedModel
+import com.azamovhudstc.logosmart.data.model.GameTypeModel
+import com.azamovhudstc.logosmart.data.model.SoundLessonModel
+import com.azamovhudstc.logosmart.data.model.TrainingLayoutsModel
 
 object LocalData {
 
@@ -10,11 +14,21 @@ object LocalData {
         SoundLessonModel(R.drawable.l_alphabet, "L tovushini rivojlantirish", 32),
         SoundLessonModel(R.drawable.simg, "S tovushini rivojlantirish", 32),
         SoundLessonModel(R.drawable.yimg, "Y tovushini rivojlantirish", 32),
-        SoundLessonModel(R.drawable.ic_alphabet, "R tovushini rivojlantirish", 32),
+        SoundLessonModel(R.drawable.k, "K tovushini rivojlantirish", 32),
     )
     val trainingList = listOf(
+
         TrainingLayoutsModel(
-            "Nutq chiqazish",
+            "Ekpress-diagnostika",
+            "0-5 yosh",
+            R.color.basicBlue,
+            R.drawable.persona2,
+            R.drawable.icon_sound_4,
+            R.color.orange,
+            R.drawable.ic_next_orange
+        ),
+        TrainingLayoutsModel(
+            "Ilk nutqni rivojlantirish",
             "2+ yosh",
             R.color.pink_50,
             R.drawable.ic_person_1,
@@ -23,7 +37,7 @@ object LocalData {
             R.drawable.ic_next_button_whitebg
         ),
         TrainingLayoutsModel(
-            "Artikulatsiya mashqlari",
+            "Tovushlar talaffuzini rivojlantirish",
             "3-5 yosh",
             R.color.orange_50,
             R.drawable.ic_person_2,
@@ -32,7 +46,7 @@ object LocalData {
             R.drawable.ic_next_button_bluebg
         ),
         TrainingLayoutsModel(
-            "Video darslar",
+            "Video mashg‘ulotlar",
             "3-5 yosh",
             R.color.blue_50,
             R.drawable.ic_person_3,
@@ -40,15 +54,6 @@ object LocalData {
             R.color.grey,
             R.drawable.ic_next_button_greybg
         ),
-        TrainingLayoutsModel(
-            "Diagnoz bo'yicha\nmashg'ulotlar",
-            "0-5 yosh",
-            R.color.orange_50,
-            R.drawable.ic_person_4,
-            R.drawable.icon_sound_4,
-            R.color.basicBlue,
-            R.drawable.ic_next_button_bluebg
-        )
     )
 
 

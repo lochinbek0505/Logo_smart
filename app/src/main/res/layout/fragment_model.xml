@@ -83,6 +83,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/gif"
                 app:srcCompat="@drawable/no_body_persona" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -104,6 +105,7 @@
         app:strokeWidth="@dimen/_2sdp">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/camera"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/_3sdp"
@@ -141,6 +143,7 @@
             app:srcCompat="@drawable/speak" />
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/next"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
             android:layout_marginStart="15dp"

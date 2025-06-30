@@ -62,7 +62,11 @@
         android:id="@+id/secondGame"
         android:name="com.azamovhudstc.logosmart.ui.screens.games.second_game.SecondGame"
         android:label="fragment_second_game"
-        tools:layout="@layout/fragment_second_game" />
+        tools:layout="@layout/fragment_second_game" >
+        <action
+            android:id="@+id/action_secondGame_to_modelFragment"
+            app:destination="@id/modelFragment" />
+    </fragment>
     <fragment
         android:id="@+id/firstGameScreen"
         android:name="com.azamovhudstc.logosmart.ui.screens.games.first_game.FirstGameScreen"
@@ -142,5 +146,9 @@
         android:id="@+id/modelFragment"
         android:name="com.azamovhudstc.logosmart.ui.screens.camera_tasks.ModelFragment"
         android:label="fragment_model"
-        tools:layout="@layout/fragment_model" />
+        tools:layout="@layout/fragment_model" >
+        <action
+            android:id="@+id/action_modelFragment_to_secondGame"
+            app:destination="@id/secondGame" />
+    </fragment>
 </navigation>
