@@ -11,8 +11,6 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.viewbinding.ViewBinding
 import com.azamovhudstc.logosmart.R
 import com.azamovhudstc.logosmart.app.LogoApp
-import com.daimajia.androidanimations.library.Techniques
-import com.daimajia.androidanimations.library.YoYo
 import kotlin.jvm.internal.Intrinsics
 import kotlin.reflect.KClass
 
@@ -88,8 +86,5 @@ object ViewGroupExtensionsKt {
         return inflate
     }
 
-    fun yoYo(`$this$yoYo`: View?) {
-        YoYo.with(Techniques.Flash).duration(200).interpolate(BounceInterpolator())
-            .playOn(`$this$yoYo`)
-    }
+
 }

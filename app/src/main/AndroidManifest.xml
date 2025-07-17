@@ -22,6 +22,15 @@
         android:theme="@style/Theme.LogoSmarGame"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.CameraActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.screens.camera_tasks.VideoActivity"
             android:exported="false" />
         <activity
@@ -33,11 +42,7 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -10,7 +10,7 @@
     <color name="basicYellow">#FFE6B2</color>
     <color name="basicYellow_400">#FFD98A</color>
     <color name="status">#05FFFFFF</color>
-
+    <color name="green">#0cf03a</color>
     <color name="track_color">#F0F0F0</color>
     <color name="button_icon">#A9FFFFFF</color>
     <color name="nav_status">#80FFFFFF</color>
@@ -31,4 +31,19 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white400">#F2F4F6</color>
+
+
+    <color name="mp_color_primary">#007F8B</color>
+    <color name="mp_color_primary_variant">#12B5CB</color>
+    <color name="mp_color_primary_dark">#00676D</color>
+    <color name="mp_color_secondary">#FBBC04</color>
+    <color name="mp_color_secondary_variant">#F9AB00</color>
+    <color name="mp_color_error">#B00020</color>
+    <color name="toolbar_background">#E0E0E0</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
+    <color name="bottom_sheet_background">#EEEEEE</color>
+    <color name="bottom_sheet_text_color">@android:color/black</color>
+    <color name="icActive">#FFFFFFFF</color>
+    <color name="icFocused">#DDFFFFFF</color>
+    <color name="icPressed">#AAFFFFFF</color>
 </resources>

@@ -12,7 +12,7 @@ import com.azamovhudstc.logosmart.databinding.ItemPinCustomBinding
 import java.util.*
 
 fun checkAllItemsEqual(itemPinBindings: MutableList<ItemPinCustomBinding>): Boolean {
-    val texts = itemPinBindings.map { it.root.text.toString().toUpperCase(Locale.ROOT) }
+    val texts = itemPinBindings.map { it.root.text.toString().uppercase(Locale.ROOT) }
     println(texts.toList().joinToString(""))
     return texts.toList().joinToString("").equals("RAKETA")
 }

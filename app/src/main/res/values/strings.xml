@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">LogoSmart-Game</string>
+    <string name="app_name" translatable="false">LogoSmart</string>
 
     <string name="training">Training</string>
     <string name="games">Games</string>

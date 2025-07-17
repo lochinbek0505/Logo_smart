@@ -1,20 +1,12 @@
 package com.azamovhudstc.logosmart.ui.screens.camera_tasks
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.ImageFormat
-import android.graphics.Matrix
-import android.graphics.Rect
-import android.graphics.YuvImage
+import android.graphics.*
 import android.os.Bundle
+import android.util.Log
 import android.util.Size
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageAnalysis
-import androidx.camera.core.ImageProxy
-import androidx.camera.core.Preview
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -25,6 +17,8 @@ import com.bumptech.glide.Glide
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 class ModelActivity : AppCompatActivity() {
     private lateinit var binding: ActivityModelBinding
@@ -33,43 +27,39 @@ class ModelActivity : AppCompatActivity() {
     private var imageAnalysis: ImageAnalysis? = null
     private var isRunning = true
     private var hasNavigated = false
-    private var successStartTime: Long = 0L // 🟢 2 sekundni kuzatish uchun
-
-    private var modelIndex = 1 // Default
+    private var successStartTime: Long = 0L
+    private var cameraExecutor: ExecutorService = Executors.newSingleThreadExecutor()
+    private var modelIndex = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityModelBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        modelIndex = intent.getIntExtra("ch", 1)
+//        modelIndex = intent.getIntExtra("ch", 1)
+        modelIndex=1
 
         processor = when (modelIndex) {
             1 -> {
                 Glide.with(this).asGif().load(R.drawable.ic_ong).into(binding.gif)
                 YoloProcessor(this, "chap_ong.tflite", "labels.txt")
             }
-
             2 -> {
                 Glide.with(this).asGif().load(R.drawable.ic_lab).into(binding.gif)
                 YoloProcessor(this, "lab_ochiq.tflite", "labels2.txt")
             }
-
             3 -> {
                 Glide.with(this).asGif().load(R.drawable.ic_tepa).into(binding.gif)
                 YoloProcessor(this, "tepa_past.tflite", "labels3.txt")
             }
-
             else -> YoloProcessor(this, "tepa_past.tflite", "labels3.txt")
         }
 
         setupCamera()
 
         binding.next.setOnClickListener {
-            lifecycleScope.launch {
-                if (hasNavigated) {
-                    navigateToNext()
-                }
+            if (hasNavigated) {
+                lifecycleScope.launch { navigateToNext() }
             }
         }
     }
@@ -85,9 +75,8 @@ class ModelActivity : AppCompatActivity() {
             imageAnalysis = ImageAnalysis.Builder()
                 .setTargetResolution(Size(416, 416))
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-                .build()
-                .also {
-                    it.setAnalyzer(ContextCompat.getMainExecutor(this)) { imageProxy ->
+                .build().also {
+                    it.setAnalyzer(cameraExecutor) { imageProxy ->
                         processFrame(imageProxy)
                     }
                 }
@@ -104,25 +93,22 @@ class ModelActivity : AppCompatActivity() {
             return
         }
 
-        val bitmap = imageProxyToBitmap(imageProxy).rotate(270f)
-        val results = processor.process(bitmap)
+        val rotationDegrees = imageProxy.imageInfo.rotationDegrees.toFloat()
+        val bitmap = imageProxyToBitmap(imageProxy).rotate(rotationDegrees)
         imageProxy.close()
 
+        val results = processor.process(bitmap)
+
         results.firstOrNull()?.let { result ->
-            runOnUiThread {
-                updateUI(result)
-            }
+            runOnUiThread { updateUI(result) }
         }
     }
 
-    private fun updateUI(result: DetectionResult) {
+    private fun updateUI(result: YoloProcessor.DetectionResult) {
         when {
             result.confidence > 0.7f -> {
                 binding.camera.setStrokeColor(Color.GREEN)
-
-                if (successStartTime == 0L) {
-                    successStartTime = System.currentTimeMillis()
-                }
+                if (successStartTime == 0L) successStartTime = System.currentTimeMillis()
 
                 val elapsed = System.currentTimeMillis() - successStartTime
                 if (!hasNavigated && elapsed >= 2000) {
@@ -130,12 +116,10 @@ class ModelActivity : AppCompatActivity() {
                     binding.next.setImageResource(R.drawable.next)
                 }
             }
-
             result.confidence > 0.5f -> {
                 binding.camera.setStrokeColor(Color.YELLOW)
                 successStartTime = 0L
             }
-
             else -> {
                 binding.camera.setStrokeColor(Color.RED)
                 successStartTime = 0L
@@ -147,29 +131,16 @@ class ModelActivity : AppCompatActivity() {
         isRunning = false
         imageAnalysis?.clearAnalyzer()
         cameraProvider?.unbindAll()
-        delay(200)
         processor.close()
+        delay(200)
 
-        when (modelIndex) {
-            1 -> {
-                val intent = Intent(this, GameActivity::class.java)
-                intent.putExtra("ch", 1)
-                startActivity(intent)
-            }
-
-            2 -> {
-                val intent = Intent(this, GameActivity::class.java)
-                intent.putExtra("ch", 2)
-                startActivity(intent)
-            }
-
-            3 -> {
-                val intent = Intent(this, VideoActivity::class.java)
-                intent.putExtra("ch", 1)
-                startActivity(intent)
-            }
+        val intent = when (modelIndex) {
+            1 -> Intent(this, GameActivity::class.java).putExtra("ch", 1)
+            2 -> Intent(this, GameActivity::class.java).putExtra("ch", 2)
+            3 -> Intent(this, VideoActivity::class.java).putExtra("ch", 1)
+            else -> return
         }
-
+        startActivity(intent)
         finish()
     }
 
@@ -179,6 +150,7 @@ class ModelActivity : AppCompatActivity() {
         processor.close()
         imageAnalysis?.clearAnalyzer()
         cameraProvider?.unbindAll()
+        cameraExecutor.shutdown()
     }
 
     private fun imageProxyToBitmap(imageProxy: ImageProxy): Bitmap {
@@ -205,13 +177,4 @@ class ModelActivity : AppCompatActivity() {
         val matrix = Matrix().apply { postRotate(degrees) }
         return Bitmap.createBitmap(this, 0, 0, width, height, matrix, true)
     }
-
-    data class DetectionResult(
-        val x: Float,
-        val y: Float,
-        val w: Float,
-        val h: Float,
-        val confidence: Float,
-        val label: String
-    )
 }
