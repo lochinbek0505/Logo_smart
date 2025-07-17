@@ -40,11 +40,11 @@ class ModelActivity : AppCompatActivity() {
         modelIndex=1
 
         processor = when (modelIndex) {
-            1 -> {
+            2 -> {
                 Glide.with(this).asGif().load(R.drawable.ic_ong).into(binding.gif)
                 YoloProcessor(this, "chap_ong.tflite", "labels.txt")
             }
-            2 -> {
+            1 -> {
                 Glide.with(this).asGif().load(R.drawable.ic_lab).into(binding.gif)
                 YoloProcessor(this, "lab_ochiq.tflite", "labels2.txt")
             }
