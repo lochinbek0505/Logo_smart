@@ -117,7 +117,7 @@ class ModelActivity : AppCompatActivity() {
                 }
             }
             result.confidence > 0.5f -> {
-                binding.camera.setStrokeColor(Color.YELLOW)
+                binding.camera.setStrokeColor(Color.GREEN)
                 successStartTime = 0L
             }
             else -> {

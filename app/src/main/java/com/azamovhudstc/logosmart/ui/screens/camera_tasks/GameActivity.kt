@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.azamovhudstc.logosmart.R
 import com.azamovhudstc.logosmart.databinding.ActivityGameBinding
 import kotlinx.coroutines.*
@@ -23,7 +24,7 @@ class GameActivity : AppCompatActivity() {
 
     private var recordingJob: Job? = null
     private var isGifPlaying = false
-    private var hasPlayedOnce = false // faqat bir marta ishlashi uchun
+    private var hasPlayedOnce = false
     private val threshold = 8000
 
     private val RECORD_AUDIO_REQUEST_CODE = 101
@@ -40,34 +41,32 @@ class GameActivity : AppCompatActivity() {
             2 -> GifDrawable(resources, R.drawable.sham)
             else -> GifDrawable(resources, R.drawable.parrak)
         }
+        gifDrawable?.setSpeed(3.0f) // 2x tezlik, 1.0f — normal, 0.5f — sekin
 
-        gifDrawable?.stop() // autoplay bo‘lmasin
+
+        gifDrawable?.stop()
         binding.gif.setImageDrawable(gifDrawable)
+
         binding.playIcon.setOnClickListener {
-
-            if (isGifPlaying){
-            when (ch) {
-                1 -> {
-                    var intent = Intent(this, ModelActivity::class.java)
-                    intent.putExtra("ch", 2)
-                    startActivity(intent)
-                    finish()
+            if (isGifPlaying) {
+                when (ch) {
+                    1 -> startNextModelActivity(2)
+                    2 -> startNextModelActivity(3)
+                    else -> playGifOnce()
                 }
-                2 -> {
-                    var intent = Intent(this, ModelActivity::class.java)
-                    intent.putExtra("ch", 3)
-                    startActivity(intent)
-                    finish()
-
-                }
-                else -> playGifFromFrame(10)
-            }
-                }else{
+            } else {
                 Toast.makeText(this, "Iltimos ekranga puflang", Toast.LENGTH_SHORT).show()
             }
-
         }
+
         checkAudioPermission()
+    }
+
+    private fun startNextModelActivity(nextCh: Int) {
+        val intent = Intent(this, ModelActivity::class.java)
+        intent.putExtra("ch", nextCh)
+        startActivity(intent)
+        finish()
     }
 
     private fun checkAudioPermission() {
@@ -102,37 +101,32 @@ class GameActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     private fun startListening() {
-        recordingJob = CoroutineScope(Dispatchers.IO).launch {
-            val bufferSize = AudioRecord.getMinBufferSize(
-                44100,
-                AudioFormat.CHANNEL_IN_MONO,
-                AudioFormat.ENCODING_PCM_16BIT
-            )
+        val bufferSize = AudioRecord.getMinBufferSize(
+            44100,
+            AudioFormat.CHANNEL_IN_MONO,
+            AudioFormat.ENCODING_PCM_16BIT
+        )
 
-            val recorder = AudioRecord(
-                MediaRecorder.AudioSource.MIC,
-                44100,
-                AudioFormat.CHANNEL_IN_MONO,
-                AudioFormat.ENCODING_PCM_16BIT,
-                bufferSize
-            )
+        val recorder = AudioRecord(
+            MediaRecorder.AudioSource.MIC,
+            44100,
+            AudioFormat.CHANNEL_IN_MONO,
+            AudioFormat.ENCODING_PCM_16BIT,
+            bufferSize
+        )
 
-            val buffer = ShortArray(bufferSize)
-            recorder.startRecording()
+        val buffer = ShortArray(bufferSize)
+        recorder.startRecording()
 
+        recordingJob = lifecycleScope.launch(Dispatchers.IO) {
             while (isActive) {
                 val read = recorder.read(buffer, 0, buffer.size)
                 val amplitude = buffer.take(read).maxOrNull()?.toInt() ?: 0
 
-                if (amplitude > threshold && !isGifPlaying && !hasPlayedOnce) {
-                    isGifPlaying = true
+                if (amplitude > threshold && !hasPlayedOnce && !isGifPlaying) {
                     hasPlayedOnce = true
                     withContext(Dispatchers.Main) {
-                        if (ch == 2) {
-                            playGifFromPosition(10000)
-                        } else {
-                            playGifFromFrame(10)
-                        }
+                        playGifOnce()
                     }
                 }
 
@@ -144,28 +138,31 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    private fun playGifFromFrame(frame: Int = 10) {
-        gifDrawable?.apply {
-            stop()
-            seekToFrame(frame)
-            loopCount = 1
-            addAnimationListener {
-                stop()
-                seekToFrame(0) // 🔁 GIF boshiga qaytsin va to‘xtasin
-            }
-            start()
-        }
-    }
+    private var gifListenerAttached = false
 
-    private fun playGifFromPosition(milliseconds: Int = 10000) {
+    private fun playGifOnce() {
         gifDrawable?.apply {
             stop()
-            seekTo(milliseconds)
-            loopCount = 1
-            addAnimationListener {
-                stop()
-                seekTo(0) // 🔁 GIF boshiga qaytsin va to‘xtasin
+
+            if (ch == 2) {
+                seekTo(10000)
+            } else {
+                seekToFrame(10)
             }
+
+            loopCount = 1
+            isGifPlaying = true
+
+            if (!gifListenerAttached) {
+                addAnimationListener {
+                    stop()
+                    seekToFrame(0)
+                    isGifPlaying = false
+                    hasPlayedOnce = false
+                }
+                gifListenerAttached = true
+            }
+
             start()
         }
     }

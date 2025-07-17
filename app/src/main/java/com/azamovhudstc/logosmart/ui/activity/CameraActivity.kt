@@ -1,6 +1,7 @@
 package com.azamovhudstc.logosmart.ui.activity
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.Bundle
@@ -11,10 +12,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import com.azamovhudstc.logosmart.R
 import com.azamovhudstc.logosmart.databinding.ActivityCameraBinding
+import com.azamovhudstc.logosmart.ui.screens.camera_tasks.GameActivity
+import com.azamovhudstc.logosmart.ui.screens.camera_tasks.VideoActivity
 import com.azamovhudstc.logosmart.utils.FaceLandmarkerHelper
+import com.bumptech.glide.Glide
 import com.google.mediapipe.tasks.vision.core.RunningMode
 import com.google.mediapipe.tasks.vision.facelandmarker.FaceLandmarkerResult
+import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
@@ -55,11 +61,31 @@ class CameraActivity : AppCompatActivity(), FaceLandmarkerHelper.LandmarkerListe
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        Glide.with(this).asGif().load(R.drawable.ogiz).into(binding.gif)
+
+        binding.next.setOnClickListener {
+            if (isMouthSuccess) {
+
+                navigateToNext()
+
+
+            }
+        }
 
         if (hasCameraPermission()) startCameraWorkflow()
         else requestPermissionLauncher.launch(Manifest.permission.CAMERA)
     }
 
+    private  fun navigateToNext() {
+        val intent = when (1) {
+            1 -> Intent(this, GameActivity::class.java).putExtra("ch", 1)
+            2 -> Intent(this, GameActivity::class.java).putExtra("ch", 2)
+            3 -> Intent(this, VideoActivity::class.java).putExtra("ch", 1)
+            else -> return
+        }
+        startActivity(intent)
+        finish()
+    }
     private fun hasCameraPermission() = ContextCompat.checkSelfPermission(
         this, Manifest.permission.CAMERA
     ) == PackageManager.PERMISSION_GRANTED
@@ -167,7 +193,8 @@ class CameraActivity : AppCompatActivity(), FaceLandmarkerHelper.LandmarkerListe
             // faqat birinchi marta bajarilsa holatni o‘zgartiramiz
             if (!isMouthSuccess) {
                 isMouthSuccess = true
-                showToast("Ogʻiz maksimal ochilib yopildi (max: ${"%.3f".format(mouthMaxRatio)})")
+                binding.next.setImageResource(R.drawable.next)
+//                showToast("Ogʻiz maksimalnimal ochilib yopildi (max: ${"%.3f".format(mouthMaxRatio)})")
                 updateCardBorder()
             }
         }
