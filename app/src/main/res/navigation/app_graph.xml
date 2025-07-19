@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_trainingScreen_to_soundLessonsScreen"
             app:destination="@id/soundLessonsScreen" />
+        <action
+            android:id="@+id/action_trainingScreen_to_videoFragment"
+            app:destination="@id/videoFragment" />
     </fragment>
     <fragment
         android:id="@+id/communityScreen"
@@ -151,4 +154,9 @@
             android:id="@+id/action_modelFragment_to_secondGame"
             app:destination="@id/secondGame" />
     </fragment>
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.azamovhudstc.logosmart.ui.screens.video.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
 </navigation>

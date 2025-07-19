@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import com.azamovhudstc.logosmart.R
 import com.azamovhudstc.logosmart.databinding.TrainingScreenBinding
 import com.azamovhudstc.logosmart.ui.adapter.TrainingAdapter
+import com.azamovhudstc.logosmart.ui.screens.video.VideoActivity2
 import com.azamovhudstc.logosmart.utils.BaseFragment
 import com.azamovhudstc.logosmart.utils.animationTransaction
 import com.azamovhudstc.logosmart.utils.slideStart
@@ -40,6 +41,12 @@ class TrainingScreen :
                             R.id.soundLessonsScreen, null,
                             animationTransaction().build()
                         )
+                    }
+                    3 -> {
+                        val intent = Intent(requireContext(), VideoActivity2::class.java)
+                        startActivity(intent)
+
+
                     }
                 }
             }

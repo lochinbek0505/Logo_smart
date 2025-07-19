@@ -100,6 +100,7 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.15.1'
     implementation 'jp.wasabeef:glide-transformations:4.3.0'
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.15.1'
+    implementation 'com.squareup.picasso:picasso:2.8'
 
     // GIF Support
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.27'
