@@ -20,7 +20,6 @@ import com.azamovhudstc.logosmart.utils.FaceLandmarkerHelper
 import com.bumptech.glide.Glide
 import com.google.mediapipe.tasks.vision.core.RunningMode
 import com.google.mediapipe.tasks.vision.facelandmarker.FaceLandmarkerResult
-import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
@@ -44,8 +43,8 @@ class CameraActivity : AppCompatActivity(), FaceLandmarkerHelper.LandmarkerListe
     private var mouthCycleInProgress = false
     private var mouthMaxRatio = 0f
 
-    private val mouthTriggerThreshold = 0.03f      // realistik og'iz ochilishi (~3%)
-    private val mouthClosingDelta = 0.008f         // 0.8% kamayish og'iz yopildi deb hisoblanadi
+    private val mouthTriggerThreshold = 0.03f
+    private val mouthClosingDelta = 0.008f
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -65,10 +64,7 @@ class CameraActivity : AppCompatActivity(), FaceLandmarkerHelper.LandmarkerListe
 
         binding.next.setOnClickListener {
             if (isMouthSuccess) {
-
                 navigateToNext()
-
-
             }
         }
 
@@ -76,7 +72,7 @@ class CameraActivity : AppCompatActivity(), FaceLandmarkerHelper.LandmarkerListe
         else requestPermissionLauncher.launch(Manifest.permission.CAMERA)
     }
 
-    private  fun navigateToNext() {
+    private fun navigateToNext() {
         val intent = when (1) {
             1 -> Intent(this, GameActivity::class.java).putExtra("ch", 1)
             2 -> Intent(this, GameActivity::class.java).putExtra("ch", 2)
@@ -86,6 +82,7 @@ class CameraActivity : AppCompatActivity(), FaceLandmarkerHelper.LandmarkerListe
         startActivity(intent)
         finish()
     }
+
     private fun hasCameraPermission() = ContextCompat.checkSelfPermission(
         this, Manifest.permission.CAMERA
     ) == PackageManager.PERMISSION_GRANTED
@@ -156,45 +153,34 @@ class CameraActivity : AppCompatActivity(), FaceLandmarkerHelper.LandmarkerListe
         runOnUiThread {
             val result = resultBundle.result ?: return@runOnUiThread
 
-            binding.overlay.setResults(
-                result,
-                resultBundle.inputImageHeight,
-                resultBundle.inputImageWidth,
-                RunningMode.LIVE_STREAM
-            )
-            binding.overlay.invalidate()
+            // ❌ Yuzga to‘r chizish o‘chirildi:
+            // binding.overlay.setResults(...)
+            // binding.overlay.invalidate()
 
-            // 👉 Har safar yuz ko‘ringanda borderni yangilash
             if (!isMouthSuccess) updateCardBorder()
 
             handleMouthCycle(result)
         }
     }
 
-
     private fun handleMouthCycle(result: FaceLandmarkerResult) {
         val ratio = getMouthOpenRatio(result)
 
-        // sikl boshlanishi
         if (!mouthCycleInProgress && ratio > mouthTriggerThreshold) {
             mouthCycleInProgress = true
             mouthMaxRatio = ratio
         }
 
-        // maksimalni yangilash
         if (mouthCycleInProgress && ratio > mouthMaxRatio) {
             mouthMaxRatio = ratio
         }
 
-        // sikl tugadi va birinchi marta toʻliq sikl bo‘ldi
         if (mouthCycleInProgress && ratio < mouthMaxRatio - mouthClosingDelta && ratio < mouthTriggerThreshold) {
             mouthCycleInProgress = false
 
-            // faqat birinchi marta bajarilsa holatni o‘zgartiramiz
             if (!isMouthSuccess) {
                 isMouthSuccess = true
                 binding.next.setImageResource(R.drawable.next)
-//                showToast("Ogʻiz maksimalnimal ochilib yopildi (max: ${"%.3f".format(mouthMaxRatio)})")
                 updateCardBorder()
             }
         }
@@ -210,16 +196,11 @@ class CameraActivity : AppCompatActivity(), FaceLandmarkerHelper.LandmarkerListe
 
     private fun getMouthOpenRatio(result: FaceLandmarkerResult): Float {
         val face = result.faceLandmarks().firstOrNull() ?: return 0f
-        return abs(face[13].y() - face[14].y()) // 13 - pastki lab, 14 - yuqori lab
-    }
-
-    private fun showToast(message: String) {
-        val timestamp = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
-        Toast.makeText(this, "[$timestamp] $message", Toast.LENGTH_SHORT).show()
+        return abs(face[13].y() - face[14].y())
     }
 
     override fun onEmpty() {
-        binding.overlay.clear()
+        // ❌ overlay chizma tozalash shart emas, bo‘sh qoldirildi
     }
 
     override fun onError(error: String, errorCode: Int) {
